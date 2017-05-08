@@ -16,4 +16,3 @@ if [[ ! -z $? ]]; then
   geoipupdate -d /geodata -f ${conf}
 fi
 
-echo "Done!"
