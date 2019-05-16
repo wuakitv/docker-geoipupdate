@@ -1,4 +1,4 @@
-FROM golang:alpine
+FROM golang:alpine as build
 
 ENV VERSION=4.0.2
 RUN apk add --update wget git bash
@@ -13,6 +13,10 @@ RUN go get -t ./... 2> /dev/null; exit 0
 RUN go build
 
 RUN cp /tmp/build/geoipupdate-${VERSION}/cmd/geoipupdate/geoipupdate /usr/bin/
+
+FROM alpine:3.8
+
+COPY --from=build /usr/bin/geoipupdate /usr/bin/
 
 COPY update.sh /usr/bin/
 ENTRYPOINT ["update.sh"]
