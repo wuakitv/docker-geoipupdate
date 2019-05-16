@@ -17,7 +17,7 @@ RUN cp /tmp/build/geoipupdate-${VERSION}/cmd/geoipupdate/geoipupdate /usr/bin/
 
 FROM alpine
 
-RUN apk add -q --update bash
+RUN apk add -q --update bash ca-certificates
 
 COPY --from=build /usr/bin/geoipupdate /usr/bin/
 COPY update.sh /usr/bin/
