@@ -1,6 +1,6 @@
 FROM golang:alpine as build
 
-ENV VERSION=4.0.2
+ENV VERSION=4.7.1
 VOLUME /geodata
 RUN apk add --update wget git bash
 RUN wget -P /tmp/build/ https://github.com/maxmind/geoipupdate/archive/v${VERSION}.tar.gz
